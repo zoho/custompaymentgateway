@@ -1,0 +1,22 @@
+{
+    "productName": "zhpay",
+    "servletContainer": {
+        "id": "jetty9",
+        "version": "9.2.22.v20170606",
+        "description": "Jetty 9.2.22.v20170606"
+    },
+    "serverConfig": {
+        "httpEnabled": false,
+        "httpsEnabled": true,
+        "httpsPort": 8550,
+        "sslKeyStorePath": "conf/keystore",
+        "sslKeyStorePassword": "ubXAKN70jqMM00Nl9OCpvKeXRB26AgMgnJ93T8zooWd3cQ8wY6kRaTXqK31bTHRRbBSKeHsFyyWMIu5ow7l6nBBs1HpEYUFG9IyCBd89nGzWtPcUsnLda64ZMBZhSC5j",
+        "sslKeyManagerPassword": "Qb67Jt2aGs1mXwNs4WfcdrAoVLpuUFd1mvnT1eqssj3aAdLa3z62UvSilburOsPnPtqivDD69KNknuhCiXvZJkCAsJPVUNR0H1TgwxigfjyVnL6zekrAAt5HVrnUiu7t"
+    },
+    "webApps": [
+        {
+            "contextPath": "/zhpay",
+            "resourceBase": "webapps/zhpay-1.0-SNAPSHOT.war"
+        }
+    ]
+}
