@@ -40,12 +40,23 @@ public class ZohoPayProcessPaymentServlet extends HttpServlet
 			boolean isSuccess = ("4111111111111111").equals(card);
 			String userID = refMap.get("account_id");
 			Map<String, String> paramterMap = new HashMap<>();
+			String redirectURL = refMap.get("payment_complete_url");
+			String[] urlAndParams = redirectURL.split("\\?");
+			String targetURL = urlAndParams[0];
+			if(urlAndParams.length > 1)
+			{
+				String[] queryParams = urlAndParams[1].split("&");
+				for(String param : queryParams)
+				{
+					String[] paramNameVSValue = param.split("=");
+					paramterMap.put(paramNameVSValue[0], paramNameVSValue[1]);
+				}
+			}
 			paramterMap.put("gateway_fee", "0.00");
 			paramterMap.put("currency_code",  refMap.get("currency_code"));
 			paramterMap.put("payment_mode", "card");
 			paramterMap.put("gateway_referece_id", String.valueOf(uniquePaymentID));
 			paramterMap.put("amount", refMap.get("amount"));
-			String targetURL = refMap.get("payment_complete_url");
 			if(isSuccess)
 			{
 				paramterMap.put("transaction_status", "1");

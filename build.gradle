@@ -32,9 +32,10 @@ version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 
 gretty {
-    httpEnabled = false;
-    httpsPort = 8550
+    httpEnabled = true
+    httpPort = 8099
     httpsEnabled = true
+    httpsPort = 8550
 }
 
 repositories {
