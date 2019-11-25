@@ -27,7 +27,7 @@ Once you have been granted access to custom payment gateways
     - Gateway Name formatted - Formatted name for your gateway
     - Live API URL - `https://localhost:8550`
     - Test API URL - `https://localhost:8550`
-    - type - choose 'Browser Redirection' radio button
+    - type - choose 'Client for Redirection' option from dropdown
     - Payment Request Path = `/zhpay/createpaypage`
     - Identifier Label Name - Any Label
     - Password Label Name - Any Label
