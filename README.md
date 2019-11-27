@@ -28,13 +28,14 @@ Once you have been granted access to custom payment gateways
     - Supported Currencies - Any set of currencies
   - Then move to Integrated gateway tab. Find you gateway from the listed gateways and click set-up gateway.
   - Enter the following credentials
+  
     - **Identifier** - ***8719992***
     - **Password** - ***uRIj0837FYjk***
 
 ## Collect payment from this gateway
     
   - Create an Invoice from your devlopment org and choose this gateway as your payment option.
-  - Click on > Pay Now button for the created invoice from client portal or use charge customer option from admin console.
+  - Click on  ***Pay Now*** button for the created invoice from client portal or use charge customer option from admin console.
   - You will be redirected to the payment page of this gateway.
   - Pay your gateway using success/failure cards
   - After payment this gateway will redirect you back to zoho books which will process your transaction and land you to payment success/failure pages.
