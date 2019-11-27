@@ -7,5 +7,12 @@ This is a custom payment gaetway devloped using gradle. This kit will allow you 
 
 ## How to get Started
 
-1. Clone this repository to your machine
-2. 
+  - Clone this repository to your machine.
+  - use `gradle appRun` in the cloned path to start custom payment gateway server in your machine.
+  - check if the server is up using `http://localhost:8099`.
+  
+## Connecting this gateway to Zoho Books.
+ 
+    Once you have been granted access to custom payment gateways move to Settings ---> Integrations ---> Customer Payments ---> Custom Payment Gateway ---> Create New Gateway.
+
+ 
