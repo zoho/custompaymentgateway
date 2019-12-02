@@ -1,20 +1,20 @@
-# Custom Payment Gateways Development Kit
+# Payment Gateway Connector Development Kit
 
-This is a custom payment gaetway devloped using gradle. This kit will allow you simulate the interation between zoho books and payment gateway. To use this development kit kindly familiarize yourself with Custom Payment Gateways from our Help Documantation.
+This Payment Gateway Connector development kit built using gradle, will allow you simulate the interation between zoho books and payment gateway. To use this development kit kindly familiarize yourself with Payment Gateway Connector from our Help Documantation.
 
 ## What you'll need
 
- - Any Recent version of java installed in your system
- - Any recent version of gradle installed in your system
+ - Java installed in your system
+ - Gradle installed in your system
  
 
 ## How to get Started
 
   - Clone this repository to your machine.
-  - use `gradle appRun` in the cloned path to start custom payment gateway server in your machine.
+  - use `gradle appRun` in the cloned path to start payment gateway server in your machine.
   - check if the server is up using `http://localhost:8099`.
   
-## Connecting this gateway to Zoho Books.
+## Creating a Payment Gateway Connector in Zoho Books.
 
 You need to be granted access to custom payment gateways, for requesting access kindly write to ***support[at]zohobooks[dot]com***
 Once you have been granted access to custom payment gateways 
@@ -27,6 +27,7 @@ Once you have been granted access to custom payment gateways
     - Gateway Name formatted - Formatted name for your gateway
     - Live API URL - `http://localhost:8099/zhpay`
     - Test API URL - `http://localhost:8099/zhpay`
+    - type - choose 'Client for Redirection' option from dropdown
     - Payment Request Path = `/createpaypage`
     - Identifier Label Name - Any Label
     - Password Label Name - Any Label
@@ -39,7 +40,7 @@ Once you have been granted access to custom payment gateways
     - **Identifier** - ***8719992***
     - **Password** - ***uRIj0837FYjk***
 
-## Collect payment from this gateway
+## Collect payment from the connected Gateway
     
   - Create an Invoice from your devlopment org and choose this gateway as your payment option.
   
