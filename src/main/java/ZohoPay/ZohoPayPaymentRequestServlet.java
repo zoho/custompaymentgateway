@@ -38,12 +38,8 @@ public class ZohoPayPaymentRequestServlet extends HttpServlet
 			}
 			String refID =  paramMap.get("reference_id");
 			DataStorage.referenceMap.put(refID, paramMap);
-			JSONObject response = new JSONObject();
-			response.put("code",String.valueOf(SUCCESS_CODE));
-			response.put("redirect_url", "/paymentpage/"+ refID);
-			response.put("message", "Payment Page Created");
-			res.setContentType("application/json");
-			writer.write(response.toString());
+			String paymentpageURL = req.getContextPath() + "/paymentpage/"+ refID;//NO I18N
+			res.sendRedirect(paymentpageURL);
 		}
 		catch(Exception e)
 		{
