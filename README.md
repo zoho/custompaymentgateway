@@ -12,7 +12,7 @@ This Payment Gateway Connector development kit built using gradle, will allow yo
 
   - Clone this repository to your machine.
   - use `gradle appRun` in the cloned path to start payment gateway server in your machine.
-  - check if the server is up using `http://localhost:8099`.
+  - check if the server is up using `https://localhost:8550`.
   
 ## Creating a Payment Gateway Connector in Zoho Books.
 
@@ -25,10 +25,10 @@ Once you have been granted access to custom payment gateways
   
     - Gateway Name - Any name for your gateway
     - Gateway Name formatted - Formatted name for your gateway
-    - Live API URL - `http://localhost:8099/zhpay`
-    - Test API URL - `http://localhost:8099/zhpay`
+    - Live API URL - `https://localhost:8550`
+    - Test API URL - `https://localhost:8550`
     - type - choose 'Client for Redirection' option from dropdown
-    - Payment Request Path = `/createpaypage`
+    - Payment Request Path = `/zhpay/createpaypage`
     - Identifier Label Name - Any Label
     - Password Label Name - Any Label
     - Supported Currencies - Any set of currencies
