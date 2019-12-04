@@ -41,7 +41,7 @@ public class ZohoPayRefundPaymentServlet extends HttpServlet
 			{
 				throw new Exception("Signature Mismatch");//No I18N
 			}
-			BigDecimal amount = new BigDecimal(paramMap.get("amount"));
+			BigDecimal amount = new BigDecimal(paramMap.get("amount"));//No I18N
 			BigDecimal paidAmount = new BigDecimal(booksRequestJSON.get("amount"));
 			if(paidAmount.compareTo(amount) < 0)
 			{

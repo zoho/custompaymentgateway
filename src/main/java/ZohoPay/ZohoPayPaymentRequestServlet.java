@@ -25,13 +25,13 @@ public class ZohoPayPaymentRequestServlet extends HttpServlet
 		try
 		{
 			Map<String, String> paramMap =  PaymentUtil.getRequestParams(req, req.getParameterNames());
-			String signature =  paramMap.remove("signature");
+			String signature =  paramMap.remove("signature");//NO I18N
 			boolean isVerified = PaymentUtil.verifySignature(signature, paramMap);
 			if(!isVerified)
 			{
-			   throw new Exception("Signature Mismatch !!!");
+			   throw new Exception("Signature Mismatch !!!");//NO I18N
 			}
-			String refID =  paramMap.get("reference_id");
+			String refID =  paramMap.get("reference_id");//NO I18N
 			DataStorage.paymentRequestRefMap.put(refID, paramMap);
 			String paymentpageURL = "/zhpay/paymentpage/"+ refID;//NO I18N
 			res.setStatus(302);
@@ -41,7 +41,7 @@ public class ZohoPayPaymentRequestServlet extends HttpServlet
 		{
 			res.setContentType("application/json");
 			res.setStatus(400);
-			writer.write("{\"error_code\":510, \"message\" : \"" + e.getMessage() + "\" }");
+			writer.write("{\"error_code\":510, \"message\" : \"" + e.getMessage() + "\" }");//NO I18N
 
 		}
 	}
