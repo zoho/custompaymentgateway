@@ -7,7 +7,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.json.JSONObject;
 
 @WebServlet("/createpaypage")
 public class ZohoPayPaymentRequestServlet extends HttpServlet
@@ -37,9 +36,10 @@ public class ZohoPayPaymentRequestServlet extends HttpServlet
 			   return;
 			}
 			String refID =  paramMap.get("reference_id");
-			DataStorage.referenceMap.put(refID, paramMap);
-			String paymentpageURL = req.getContextPath() + "/paymentpage/"+ refID;//NO I18N
-			res.sendRedirect(paymentpageURL);
+			DataStorage.PAYMENT_REQUEST_REFERENCE_MAP.put(refID, paramMap);
+			String paymentpageURL = "/zhpay/paymentpage/"+ refID;//NO I18N
+			res.setStatus(302);
+			res.setHeader("Location", paymentpageURL);
 		}
 		catch(Exception e)
 		{
