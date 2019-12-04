@@ -36,10 +36,10 @@ public class ZohoPayPaymentRequestServlet extends HttpServlet
 			   return;
 			}
 			String refID =  paramMap.get("reference_id");
-			DataStorage.PAYMENT_REQUEST_REFERENCE_MAP.put(refID, paramMap);
+			DataStorage.paymentRequestRefMap.put(refID, paramMap);
 			String paymentpageURL = "/zhpay/paymentpage/"+ refID;//NO I18N
 			res.setStatus(302);
-			res.setHeader("Location", paymentpageURL);
+			res.setHeader("Location", paymentpageURL);//No I18N
 		}
 		catch(Exception e)
 		{

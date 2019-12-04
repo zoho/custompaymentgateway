@@ -26,7 +26,7 @@ public class ZohoPayPaymentPageServlet extends HttpServlet
 		String requri = req.getRequestURI();
 		String[] uri = requri.split("/");
 		String refId = uri[uri.length - 1];
-		Map<String, String> refMap = DataStorage.PAYMENT_REQUEST_REFERENCE_MAP.get(refId);
+		Map<String, String> refMap = DataStorage.paymentRequestRefMap.get(refId);
 		String entityNumber = refMap.get("entity_number");
 		String amount = refMap.get("amount");
 		req.setAttribute("invoiceNumber",entityNumber);
