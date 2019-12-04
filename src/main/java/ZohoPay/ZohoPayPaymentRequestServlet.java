@@ -11,9 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/createpaypage")
 public class ZohoPayPaymentRequestServlet extends HttpServlet
 {
-	public static final Integer SUCCESS_CODE = 5010;
-	public static final Integer HTTP_STATUS_FORBIDDEN = 403;
-	public static final Integer HTTP_STATUS_INTERNAL_ERROR = 500;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
@@ -32,8 +29,7 @@ public class ZohoPayPaymentRequestServlet extends HttpServlet
 			boolean isVerified = PaymentUtil.verifySignature(signature, paramMap);
 			if(!isVerified)
 			{
-			   res.setStatus(HTTP_STATUS_FORBIDDEN);
-			   return;
+			   throw new Exception("Signature Mismatch !!!");
 			}
 			String refID =  paramMap.get("reference_id");
 			DataStorage.paymentRequestRefMap.put(refID, paramMap);
@@ -44,7 +40,9 @@ public class ZohoPayPaymentRequestServlet extends HttpServlet
 		catch(Exception e)
 		{
 			res.setContentType("application/json");
-			res.setStatus(HTTP_STATUS_INTERNAL_ERROR);
+			res.setStatus(400);
+			writer.write("{\"error_code\":510, \"message\" : \"" + e.getMessage() + "\" }");
+
 		}
 	}
 

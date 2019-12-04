@@ -53,6 +53,10 @@ public class PaymentUtil
 	public static boolean verifySignature(String receivedSignature, Map<String, String> paramterMap) throws Exception
 	{
 		String userID = paramterMap.get("account_id");
+		if(!DataStorage.userVsPasswordMap.containsKey(userID))
+		{
+			throw new Exception("Invalid Account ID");
+		}
 		String actualsignature = sortAndGetSign(paramterMap, DataStorage.userVsPasswordMap.get(userID));
 		return receivedSignature.equals(actualsignature);
 	}

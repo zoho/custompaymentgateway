@@ -26,7 +26,6 @@ public class ZohoPayRefundPaymentServlet extends HttpServlet
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException
 	{
-		JSONObject responseJSON = new JSONObject();
 		PrintWriter writer = res.getWriter();
 		try
 		{
@@ -49,10 +48,9 @@ public class ZohoPayRefundPaymentServlet extends HttpServlet
 				throw new Exception("Invalid amount");//No I18N
 			}
 			DataStorage.paymentRefundedRefMap.put(gatewayReferenceID, String.valueOf(amount));
-			responseJSON.put("message", "Refund Recorded Successfully");//No I18N
 			res.setContentType("application/json");//No I18N
 			res.setStatus(201);
-			writer.write(responseJSON.toString());
+			writer.write("{\"zcm_errorcode\":101, \"message\" : \"Refund Recorded Successfully\" }");//No I18N
 		}
 		catch(Exception e)
 		{
