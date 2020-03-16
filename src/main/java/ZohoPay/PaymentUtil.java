@@ -1,8 +1,10 @@
 package ZohoPay;
 
+import java.io.InputStream;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import java.util.TreeMap;
 
 import javax.crypto.Mac;
@@ -11,6 +13,26 @@ import javax.servlet.http.HttpServletRequest;
 
 public class PaymentUtil
 {
+
+	public static final String CREDENTIAL_PROPERTIES = "Credentials.properties";
+	public static final String ACCOUNT_ID = "accountID";
+	public static final String PASSWORD = "password";
+
+	private static Properties properties;
+
+	static
+	{
+		try
+		{
+			properties = new Properties();
+			InputStream inputStream = PaymentUtil.class.getClassLoader().getResourceAsStream(CREDENTIAL_PROPERTIES);
+			properties.load(inputStream);
+		}
+		catch(Exception e)
+		{
+		     e.printStackTrace();
+		}
+	}
 
 	
 	public static String sortAndGetSign(Map<String, String> params, String signKey) throws Exception
@@ -52,12 +74,12 @@ public class PaymentUtil
 
 	public static boolean verifySignature(String receivedSignature, Map<String, String> paramterMap) throws Exception
 	{
-		String userID = paramterMap.get("account_id");
-		if(!DataStorage.userVsPasswordMap.containsKey(userID))
+		String accountId = paramterMap.get("account_id");
+		if(!properties.getProperty(ACCOUNT_ID).equals(accountId))
 		{
 			throw new Exception("Invalid Account ID");
 		}
-		String actualsignature = sortAndGetSign(paramterMap, DataStorage.userVsPasswordMap.get(userID));
+		String actualsignature = sortAndGetSign(paramterMap, properties.getProperty(PASSWORD));
 		return receivedSignature.equals(actualsignature);
 	}
 
@@ -75,7 +97,7 @@ public class PaymentUtil
 
 	public static String getSignature(Map<String, String> paramMap, String userID) throws Exception
 	{
-		String signKey = DataStorage.userVsPasswordMap.get(userID);
+		String signKey = properties.getProperty(PASSWORD);
 		return sortAndGetSign(paramMap, signKey);
 	}
 }

@@ -1,8 +1,11 @@
 package ZohoPay;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import javax.servlet.annotation.*;
 import java.util.Map;
+import java.util.Properties;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +27,18 @@ public class ZohoPayPaymentRequestServlet extends HttpServlet
 		PrintWriter writer = res.getWriter();
 		try
 		{
+			try
+			{
+				Properties properties = new Properties();
+				InputStream inputStream = PaymentUtil.class.getClassLoader().getResourceAsStream("Credentials.properties");
+				writer.println("printing inputstream....");
+				writer.println(inputStream.toString());
+				properties.load(inputStream);
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
 			Map<String, String> paramMap =  PaymentUtil.getRequestParams(req, req.getParameterNames());
 			String signature =  paramMap.remove("signature");//NO I18N
 			boolean isVerified = PaymentUtil.verifySignature(signature, paramMap);
@@ -32,7 +47,7 @@ public class ZohoPayPaymentRequestServlet extends HttpServlet
 			   throw new Exception("Signature Mismatch !!!");//NO I18N
 			}
 			String refID =  paramMap.get("reference_id");//NO I18N
-			DataStorage.paymentRequestRefMap.put(refID, paramMap);
+			PaymentReference.paymentRequestRefMap.put(refID, paramMap);
 			String paymentpageURL = "/zhpay/paymentpage/"+ refID;//NO I18N
 			res.setStatus(302);
 			res.setHeader("Location", paymentpageURL);//No I18N

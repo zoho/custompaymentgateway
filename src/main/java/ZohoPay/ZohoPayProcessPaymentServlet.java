@@ -35,7 +35,7 @@ public class ZohoPayProcessPaymentServlet extends HttpServlet
 			Map<String, String> paramMap = PaymentUtil.getRequestParams(req, parameterNames);
 			String card =  paramMap.get("card_number");
 			String refID = paramMap.get("reference_id");
-			Map<String, String> refMap = DataStorage.paymentRequestRefMap.get(refID);
+			Map<String, String> refMap = PaymentReference.paymentRequestRefMap.get(refID);
 			String uniquePaymentID = String.valueOf(UUID.randomUUID());
 			boolean isSuccess = ("4111111111111111").equals(card);
 			String userID = refMap.get("account_id");
@@ -52,7 +52,7 @@ public class ZohoPayProcessPaymentServlet extends HttpServlet
 					paramterMap.put(paramNameVSValue[0], paramNameVSValue[1]);
 				}
 			}
-			paramterMap.put("gateway_fee", "0.00");
+			paramterMap.put("gateway_fee", "5.00");
 			paramterMap.put("currency_code",  refMap.get("currency_code"));
 			paramterMap.put("payment_mode", "card");
 			paramterMap.put("gateway_referece_id", uniquePaymentID);
@@ -69,7 +69,7 @@ public class ZohoPayProcessPaymentServlet extends HttpServlet
 			}
 			String signature = PaymentUtil.getSignature(paramterMap, userID);
 			paramterMap.put("signature", signature);
-			DataStorage.paymentRecordedRefMap.put(uniquePaymentID, refID);
+			PaymentReference.paymentRecordedRefMap.put(uniquePaymentID, refID);
 			StringBuilder stringBuilder = new StringBuilder();
 			for(Map.Entry<String, String> paramEntry : paramterMap.entrySet())
 			{
