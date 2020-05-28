@@ -14,9 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 public class PaymentUtil
 {
 
-	public static final String CREDENTIAL_PROPERTIES = "Credentials.properties";
-	public static final String ACCOUNT_ID = "accountID";
-	public static final String PASSWORD = "password";
+	public static final String CREDENTIAL_PROPERTIES = "Credentials.properties";//No I18N
+	public static final String ACCOUNT_ID = "accountID";//No I18N
+	public static final String PASSWORD = "password";//No I18N
 
 	private static Properties properties;
 
@@ -31,8 +31,8 @@ public class PaymentUtil
 		catch(Exception e)
 		{
 			 properties = new Properties();
-		     properties.setProperty("accountID","8719992");
-		     properties.setProperty("password","uRIj0837FYjk");
+		     properties.setProperty("accountID","8719992");//No I18N
+		     properties.setProperty("password","uRIj0837FYjk");//No I18N
 		}
 	}
 
@@ -58,7 +58,7 @@ public class PaymentUtil
 		Mac mac = Mac.getInstance("HmacSHA256");
 		mac.init(keySpec);
 		byte[] rawHmac = mac.doFinal(message.getBytes());
-		return new String(encodeHex(rawHmac, new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'}));
+		return new String(encodeHex(rawHmac, new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'}));//No I18N
 	}
 
 	private static char[] encodeHex(byte[] data, char[] toDigits) {
