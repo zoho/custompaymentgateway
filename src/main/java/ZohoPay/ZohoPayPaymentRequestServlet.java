@@ -27,18 +27,9 @@ public class ZohoPayPaymentRequestServlet extends HttpServlet
 		PrintWriter writer = res.getWriter();
 		try
 		{
-			try
-			{
-				Properties properties = new Properties();
-				InputStream inputStream = PaymentUtil.class.getClassLoader().getResourceAsStream("Credentials.properties");
-				writer.println("printing inputstream....");
-				writer.println(inputStream.toString());
-				properties.load(inputStream);
-			}
-			catch(Exception e)
-			{
-				e.printStackTrace();
-			}
+			Properties properties = new Properties();
+			InputStream inputStream = PaymentUtil.class.getClassLoader().getResourceAsStream("Credentials.properties");
+			properties.load(inputStream);
 			Map<String, String> paramMap =  PaymentUtil.getRequestParams(req, req.getParameterNames());
 			String signature =  paramMap.remove("signature");//NO I18N
 			boolean isVerified = PaymentUtil.verifySignature(signature, paramMap);

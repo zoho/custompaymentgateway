@@ -30,7 +30,9 @@ public class PaymentUtil
 		}
 		catch(Exception e)
 		{
-		     e.printStackTrace();
+			 properties = new Properties();
+		     properties.setProperty("accountID","8719992");
+		     properties.setProperty("password","uRIj0837FYjk");
 		}
 	}
 
