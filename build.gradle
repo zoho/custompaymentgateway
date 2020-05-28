@@ -33,9 +33,9 @@ sourceCompatibility = 1.8
 
 gretty {
     httpEnabled = true
-    httpPort = 8055
+    httpPort = 8099
     httpsEnabled = true
-    httpsPort = 8950
+    httpsPort = 8550
 }
 
 repositories {
