@@ -31,8 +31,8 @@ public class PaymentUtil
 		catch(Exception e)
 		{
 			 properties = new Properties();
-		     properties.setProperty("accountID","8719992");//No I18N
-		     properties.setProperty("password","uRIj0837FYjk");//No I18N
+		     properties.setProperty("accountID","dummy_accountid");//No I18N
+		     properties.setProperty("password","dummy_password");//No I18N
 		}
 	}
 
