@@ -37,8 +37,8 @@ Once you have been granted access to custom payment gateways
   
   - Enter the following credentials
   
-    - **Identifier** - ***8719992***
-    - **Password** - ***uRIj0837FYjk***
+    - **Identifier** - ***dummy_accountid***
+    - **Password** - ***dummy_password***
 
 ## Collect payment from the connected Gateway
     
